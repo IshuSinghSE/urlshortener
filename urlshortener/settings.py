@@ -14,9 +14,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*.railway.app','localhost','127.0.0.1',]
+ALLOWED_HOSTS = ['urlshortener-production-4f6e.up.railway.app','localhost','127.0.0.1',]
 
-# CSRF_TRUSTED_ORIGINS = ['https://*.railway.app',]
+# CSRF_TRUSTED_ORIGINS = ['https://urlshortener-production-4f6e.up.railway.app/',]
 
 CSRF_COOKIE_MASKED  = True
 CSRF_COOKIE_SECURE  = True
@@ -132,7 +132,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-
+DATABASE_URL =  os.getenv("DB_URL")
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
