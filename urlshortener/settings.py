@@ -16,7 +16,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['uly.up.railway.app','localhost','127.0.0.1',]
 
-# CSRF_TRUSTED_ORIGINS = ['uly.up.railway.app',]
+CSRF_TRUSTED_ORIGINS = ['https://uly.up.railway.app',]
 
 CSRF_COOKIE_MASKED  = True
 CSRF_COOKIE_SECURE  = True
