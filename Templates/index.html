@@ -7,14 +7,17 @@
     <div class="card-header text-center py-3">
       <h1>URL Shortner <i class="fas fa-link px-2"></i></h1>
     </div>
-    <div class="px-3 py-4">
-      <form action="" method="POST">
+    {% include 'messages.html' %}
+    <div class="card-body px-3 text-center py-4">
+      <form action="/" method="POST">
         {% csrf_token %}
         <div class="row g-1">
-          <div class="col-10">{{form.long_url}}</div>
-          <div class="col-2">
-            <button class="btn btn-success btn-lg w-100" type="submit">
-              Shorten
+          <div class="col-12">{{form.long_url}}</div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <button style="font-size: large; font-weight: 500; " class="btn btn-primary btn mt-3 w-100" type="submit">
+              Create Link
             </button>
           </div>
         </div>
@@ -34,8 +37,8 @@
     <p>You can copy the Link below and share it with your friends</p>
     <p><a href={{new_url}} id="myText" target="_blank" style="text-decoration: none;">{{new_url}}</a></p>
     <div class="container">
-    <button class="btn btn-primary mx-1 mb-2" onclick="copyContent()"> Copy Link</button>
-    <button class="btn btn-danger mx-1 mb-2" onclick="shareContent()"> Share Link</button>
+    <button style="font-size: medium; font-weight: 300; " class="btn btn-warning mx-1 mb-2" onclick="copyContent()"> Copy Link</button>
+    <button style="font-size: medium; font-weight: 300; " class="btn btn-danger mx-1 mb-2" onclick="shareContent()"> Share Link</button>
     </div>
     <p><span class="text-danger"></i> Previous URL:  </span><a href={{new_url}} id="myText" target="_blank" style="text-decoration: none;">{{long_url}}</a></p>
   </div>

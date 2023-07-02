@@ -6,7 +6,16 @@ load_dotenv()
 
 # Update database configuration from $DATABASE_URL.
 import dj_database_url
+from django.contrib.messages import constants as messages
 
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,7 +25,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['uly.up.railway.app','localhost','127.0.0.1',]
 
-CSRF_TRUSTED_ORIGINS = ['https://uly.up.railway.app',]
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app',]
 
 CSRF_COOKIE_MASKED  = True
 CSRF_COOKIE_SECURE  = True
@@ -86,7 +95,6 @@ DATABASES = {
         'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': os.getenv("DB_HOST"),
         'PORT': os.getenv("DB_PORT"),
-        'DATABASE_URL': os.getenv("DB_URL"),
     }
 }
 

@@ -1,7 +1,7 @@
 # Shortener views
-from django.shortcuts import render # We will use it later
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-
+from django.contrib import messages #import messages
 # Model
 from .models import Shortener
 # Custom form
@@ -18,7 +18,7 @@ def home_view(request):
     context['form'] = ShortenerForm()
 
     if request.method == 'GET':
-        return render(request, template, context)
+        return  render(request, template, context)
 
     elif request.method == 'POST':
 
@@ -35,8 +35,8 @@ def home_view(request):
              
             context['new_url']  = new_url
             context['long_url'] = long_url
-             
-            return render(request, template, context)
+            messages.success(request, f"Your new url {new_url} is been created!" )
+            return  render(request, template, context)
 
         elif url.exists():
             old_url = request.build_absolute_uri('/') + Shortener.objects.get(long_url=long).short_url
@@ -44,6 +44,7 @@ def home_view(request):
 
             context['new_url'] = old_url
             context['long_url'] = long_url
+            messages.info(request, f"Your url {long_url} already exists at {old_url} !" )
 
         context['errors'] = used_form.errors
 
@@ -60,4 +61,5 @@ def redirect_url_view(request, shortened_part):
         return HttpResponseRedirect(shortener.long_url)
         
     except:
+        messages.warning(request, 'Sorry this link is broken :(' )
         raise Http404('Sorry this link is broken :(')
