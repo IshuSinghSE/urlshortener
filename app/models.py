@@ -35,4 +35,4 @@ class Shortener(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.long_url[:100]} || {self.short_url}'
+        return f'{self.long_url[:50]} || {self.short_url}'

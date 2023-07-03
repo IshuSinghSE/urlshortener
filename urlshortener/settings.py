@@ -27,10 +27,11 @@ ALLOWED_HOSTS = ['uly.up.railway.app','localhost','127.0.0.1',]
 
 CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app',]
 
-CSRF_COOKIE_MASKED  = True
-CSRF_COOKIE_SECURE  = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False
+if not DEBUG:
+    CSRF_COOKIE_MASKED  = True
+    CSRF_COOKIE_SECURE  = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = False
 
 # CONN_MAX_AGE = 60
 
@@ -135,7 +136,6 @@ MEDIA_URL  = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Simplified static file serving.
-# https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
